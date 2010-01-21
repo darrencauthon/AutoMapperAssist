@@ -19,7 +19,7 @@ namespace AutoMapperAssist.Tests
             mappingEngineFake.Setup(x => x.Map<Apple, Orange>(apple))
                 .Returns(expectedOrange);
 
-            var converter = new ObjectConverter<Apple, Orange>(mappingEngineFake.Object);
+            var converter = new TestObjectConverter(mappingEngineFake.Object);
 
             // act
             var orange = converter.Convert(apple);
@@ -32,7 +32,7 @@ namespace AutoMapperAssist.Tests
         public void CreateMap_PassedMappingConfiguration_CallsCreateMapOnMappingConfiguration()
         {
             // arrange
-            var converter = new ObjectConverter<Apple, Orange>(new Mock<IMappingEngine>().Object);
+            var converter = new TestObjectConverter(new Mock<IMappingEngine>().Object);
 
             var configurationFake = new Mock<IConfiguration>();
 
@@ -42,6 +42,12 @@ namespace AutoMapperAssist.Tests
             // assert
             configurationFake.Verify(x => x.CreateMap<Apple, Orange>(), Times.Once());
         }
+    }
+
+    public class TestObjectConverter : ObjectConverter<Apple, Orange>
+    {
+        public TestObjectConverter(IMappingEngine mappingEngine)
+            : base(mappingEngine){}
     }
 
     public class Apple

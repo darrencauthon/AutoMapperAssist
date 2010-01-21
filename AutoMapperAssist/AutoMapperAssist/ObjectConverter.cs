@@ -2,11 +2,11 @@ using AutoMapper;
 
 namespace AutoMapperAssist
 {
-    public class ObjectConverter<TFrom, TTo>
+    public abstract class ObjectConverter<TFrom, TTo>
     {
         private readonly IMappingEngine mappingEngine;
 
-        public ObjectConverter(IMappingEngine mappingEngine)
+        protected ObjectConverter(IMappingEngine mappingEngine)
         {
             this.mappingEngine = mappingEngine;
         }
