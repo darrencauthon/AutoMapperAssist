@@ -3,7 +3,7 @@ using AutoMapper.Mappers;
 
 namespace AutoMapperAssist
 {
-    public abstract class ObjectConverter<TFrom, TTo> : IMapToCreate
+    public abstract class ObjectConverter<TFrom, TTo> : IMapToCreate, IObjectConverter<TFrom, TTo>
     {
         private readonly IMappingEngine mappingEngine;
 
