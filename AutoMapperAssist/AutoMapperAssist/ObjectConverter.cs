@@ -2,7 +2,7 @@ using AutoMapper;
 
 namespace AutoMapperAssist
 {
-    public abstract class ObjectConverter<TFrom, TTo>
+    public abstract class ObjectConverter<TFrom, TTo> : IMapToCreate
     {
         private readonly IMappingEngine mappingEngine;
 
