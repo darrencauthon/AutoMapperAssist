@@ -27,6 +27,21 @@ namespace AutoMapperAssist.Tests
             // assert
             Assert.AreSame(expectedOrange, orange);
         }
+
+        [TestMethod]
+        public void CreateMap_PassedMappingConfiguration_CallsCreateMapOnMappingConfiguration()
+        {
+            // arrange
+            var converter = new ObjectConverter<Apple, Orange>(new Mock<IMappingEngine>().Object);
+
+            var configurationFake = new Mock<IConfiguration>();
+
+            // act
+            converter.CreateMap(configurationFake.Object);
+
+            // assert
+            configurationFake.Verify(x => x.CreateMap<Apple, Orange>(), Times.Once());
+        }
     }
 
     public class Apple

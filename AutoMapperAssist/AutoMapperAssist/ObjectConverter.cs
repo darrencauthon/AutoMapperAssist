@@ -15,5 +15,10 @@ namespace AutoMapperAssist
         {
             return mappingEngine.Map<TFrom, TTo>(from);
         }
+
+        public virtual void CreateMap(IConfiguration configuration)
+        {
+            configuration.CreateMap<TFrom, TTo>();
+        }
     }
 }
