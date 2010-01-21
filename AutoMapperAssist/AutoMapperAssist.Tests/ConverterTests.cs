@@ -29,6 +29,19 @@ namespace AutoMapperAssist.Tests
         }
 
         [TestMethod]
+        public void Convert_PassedTAndNoConstructor_ReturnsMappedObject()
+        {
+            // arrange
+            var converter = new TestObjectConverter();
+
+            // act
+            var orange = converter.Convert(new Apple {Type = "TEST"});
+
+            // assert
+            Assert.AreEqual("TEST", orange.Type);
+        }
+
+        [TestMethod]
         public void CreateMap_PassedMappingConfiguration_CallsCreateMapOnMappingConfiguration()
         {
             // arrange
@@ -46,15 +59,23 @@ namespace AutoMapperAssist.Tests
 
     public class TestObjectConverter : ObjectConverter<Apple, Orange>
     {
+        public TestObjectConverter()
+        {
+        }
+
         public TestObjectConverter(IMappingEngine mappingEngine)
-            : base(mappingEngine){}
+            : base(mappingEngine)
+        {
+        }
     }
 
     public class Apple
     {
+        public string Type { get; set; }
     }
 
     public class Orange
     {
+        public string Type { get; set; }
     }
 }
