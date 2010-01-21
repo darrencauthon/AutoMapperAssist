@@ -15,11 +15,11 @@ namespace AutoMapperAssist.Tests
 
             var apple = new Apple();
 
-            var mappingEngine = new Mock<IMappingEngine>();
-            mappingEngine.Setup(x => x.Map<Apple, Orange>(apple))
+            var mappingEngineFake = new Mock<IMappingEngine>();
+            mappingEngineFake.Setup(x => x.Map<Apple, Orange>(apple))
                 .Returns(expectedOrange);
 
-            var converter = new ObjectConverter<Apple, Orange>(mappingEngine.Object);
+            var converter = new ObjectConverter<Apple, Orange>(mappingEngineFake.Object);
 
             // act
             var orange = converter.Convert(apple);
