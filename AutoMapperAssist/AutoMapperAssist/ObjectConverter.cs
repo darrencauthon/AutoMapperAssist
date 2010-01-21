@@ -11,7 +11,7 @@ namespace AutoMapperAssist
             this.mappingEngine = mappingEngine;
         }
 
-        public TTo Convert(TFrom from)
+        public virtual TTo Convert(TFrom from)
         {
             return mappingEngine.Map<TFrom, TTo>(from);
         }
