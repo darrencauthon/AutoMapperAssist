@@ -1,5 +1,4 @@
 using AutoMapper;
-using AutoMapper.Mappers;
 
 namespace AutoMapperAssist
 {
@@ -15,7 +14,7 @@ namespace AutoMapperAssist
 
         private static Configuration CreateDefaultAutoMapperConfiguration()
         {
-            return new Configuration(new TypeMapFactory(), MapperRegistry.AllMappers());
+            return ConfigurationHelper.CreateDefaultConfiguration();
         }
 
         protected ObjectMapper(IMappingEngine mappingEngine)

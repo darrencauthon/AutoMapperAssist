@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationHelper.cs" />
     <Compile Include="IMapToDefine.cs" />
     <Compile Include="IObjectMapper.cs" />
     <Compile Include="ObjectMapper.cs" />
