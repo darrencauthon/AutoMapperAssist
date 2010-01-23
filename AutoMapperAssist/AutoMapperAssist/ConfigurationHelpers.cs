@@ -3,7 +3,7 @@ using AutoMapper.Mappers;
 
 namespace AutoMapperAssist
 {
-    public static class ConfigurationHelper
+    public static class ConfigurationHelpers
     {
         public static Configuration CreateDefaultConfiguration()
         {

@@ -14,7 +14,7 @@ namespace AutoMapperAssist
 
         private static Configuration CreateDefaultAutoMapperConfiguration()
         {
-            return ConfigurationHelper.CreateDefaultConfiguration();
+            return ConfigurationHelpers.CreateDefaultConfiguration();
         }
 
         protected ObjectMapper(IMappingEngine mappingEngine)

@@ -4,7 +4,7 @@
     {
         public static void AssertConfigurationIsValid(this IMapToDefine mapToDefine)
         {
-            var configuration = ConfigurationHelper.CreateDefaultConfiguration();
+            var configuration = ConfigurationHelpers.CreateDefaultConfiguration();
             mapToDefine.DefineMap(configuration);
             configuration.AssertConfigurationIsValid();
         }
