@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="ObjectMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestingHelpersTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AutoMapperAssist\AutoMapperAssist.csproj">
