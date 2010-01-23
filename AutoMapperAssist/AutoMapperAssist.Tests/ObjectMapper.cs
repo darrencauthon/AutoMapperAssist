@@ -5,7 +5,7 @@ using Moq;
 namespace AutoMapperAssist.Tests
 {
     [TestClass]
-    public class ConverterTests
+    public class ObjectMapper
     {
         [TestMethod]
         public void Convert_PassedT_ReturnsResultFromAutoMapper()
@@ -19,10 +19,10 @@ namespace AutoMapperAssist.Tests
             mappingEngineFake.Setup(x => x.Map<Apple, Orange>(apple))
                 .Returns(expectedOrange);
 
-            var converter = new TestObjectConverter(mappingEngineFake.Object);
+            var converter = new TestObjectMapper(mappingEngineFake.Object);
 
             // act
-            var orange = converter.Convert(apple);
+            var orange = converter.Map(apple);
 
             // assert
             Assert.AreSame(expectedOrange, orange);
@@ -32,10 +32,10 @@ namespace AutoMapperAssist.Tests
         public void Convert_PassedTAndNoConstructor_ReturnsMappedObject()
         {
             // arrange
-            var converter = new TestObjectConverter();
+            var converter = new TestObjectMapper();
 
             // act
-            var orange = converter.Convert(new Apple {Type = "TEST"});
+            var orange = converter.Map(new Apple {Type = "TEST"});
 
             // assert
             Assert.AreEqual("TEST", orange.Type);
@@ -45,25 +45,25 @@ namespace AutoMapperAssist.Tests
         public void CreateMap_PassedMappingConfiguration_CallsCreateMapOnMappingConfiguration()
         {
             // arrange
-            var converter = new TestObjectConverter(new Mock<IMappingEngine>().Object);
+            var converter = new TestObjectMapper(new Mock<IMappingEngine>().Object);
 
             var configurationFake = new Mock<IConfiguration>();
 
             // act
-            converter.CreateMap(configurationFake.Object);
+            converter.DefineMap(configurationFake.Object);
 
             // assert
             configurationFake.Verify(x => x.CreateMap<Apple, Orange>(), Times.Once());
         }
     }
 
-    public class TestObjectConverter : ObjectConverter<Apple, Orange>
+    public class TestObjectMapper : ObjectMapper<Apple, Orange>
     {
-        public TestObjectConverter()
+        public TestObjectMapper()
         {
         }
 
-        public TestObjectConverter(IMappingEngine mappingEngine)
+        public TestObjectMapper(IMappingEngine mappingEngine)
             : base(mappingEngine)
         {
         }

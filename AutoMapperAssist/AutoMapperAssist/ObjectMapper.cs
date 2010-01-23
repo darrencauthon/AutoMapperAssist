@@ -3,11 +3,11 @@ using AutoMapper.Mappers;
 
 namespace AutoMapperAssist
 {
-    public abstract class ObjectConverter<TFrom, TTo> : IMapToCreate, IObjectConverter<TFrom, TTo>
+    public abstract class ObjectMapper<TFrom, TTo> : IMapToDefine, IObjectMapper<TFrom, TTo>
     {
         private readonly IMappingEngine mappingEngine;
 
-        protected ObjectConverter()
+        protected ObjectMapper()
         {
             var configuration = CreateAutoMapperConfigurationWithCurrentMap();
             mappingEngine = new MappingEngine(configuration);
@@ -18,17 +18,17 @@ namespace AutoMapperAssist
             return new Configuration(new TypeMapFactory(), MapperRegistry.AllMappers());
         }
 
-        protected ObjectConverter(IMappingEngine mappingEngine)
+        protected ObjectMapper(IMappingEngine mappingEngine)
         {
             this.mappingEngine = mappingEngine;
         }
 
-        public virtual TTo Convert(TFrom from)
+        public virtual TTo Map(TFrom from)
         {
             return mappingEngine.Map<TFrom, TTo>(from);
         }
 
-        public virtual void CreateMap(IConfiguration configuration)
+        public virtual void DefineMap(IConfiguration configuration)
         {
             configuration.CreateMap<TFrom, TTo>();
         }
@@ -38,7 +38,7 @@ namespace AutoMapperAssist
         private Configuration CreateAutoMapperConfigurationWithCurrentMap()
         {
             var configuration = CreateDefaultAutoMapperConfiguration();
-            CreateMap(configuration);
+            DefineMap(configuration);
             return configuration;
         }
 
