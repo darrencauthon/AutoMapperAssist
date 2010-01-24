@@ -5,7 +5,7 @@ using Moq;
 namespace AutoMapperAssist.Tests
 {
     [TestClass]
-    public class ObjectMapper
+    public class MapperTests
     {
         [TestMethod]
         public void Convert_PassedT_ReturnsResultFromAutoMapper()
@@ -57,7 +57,7 @@ namespace AutoMapperAssist.Tests
         }
     }
 
-    public class TestObjectMapper : ObjectMapper<Apple, Orange>
+    public class TestObjectMapper : Mapper<Apple, Orange>
     {
         public TestObjectMapper()
         {

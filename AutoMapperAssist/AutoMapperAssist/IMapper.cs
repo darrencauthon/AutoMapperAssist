@@ -1,6 +1,6 @@
 namespace AutoMapperAssist
 {
-    public interface IObjectMapper<TFrom, TTo>
+    public interface IMapper<TFrom, TTo>
     {
         TTo Map(TFrom from);
     }

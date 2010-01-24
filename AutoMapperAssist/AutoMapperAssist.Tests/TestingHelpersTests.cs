@@ -20,11 +20,11 @@ namespace AutoMapperAssist.Tests
         }
     }
 
-    public class ValidObjectMapper : ObjectMapper<IAmLikeAnApple, IAmAlsoLikeAnApple>
+    public class ValidObjectMapper : Mapper<IAmLikeAnApple, IAmAlsoLikeAnApple>
     {
     }
 
-    public class InvalidObjectMapper : ObjectMapper<IAmLikeAnApple, IAmLikeAnOrange>
+    public class InvalidObjectMapper : Mapper<IAmLikeAnApple, IAmLikeAnOrange>
     {
     }
 

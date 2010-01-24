@@ -2,11 +2,11 @@ using AutoMapper;
 
 namespace AutoMapperAssist
 {
-    public abstract class ObjectMapper<TFrom, TTo> : IMapToDefine, IObjectMapper<TFrom, TTo>
+    public abstract class Mapper<TFrom, TTo> : IMapToDefine, IMapper<TFrom, TTo>
     {
         private readonly IMappingEngine mappingEngine;
 
-        protected ObjectMapper()
+        protected Mapper()
         {
             var configuration = CreateAutoMapperConfigurationWithCurrentMap();
             mappingEngine = new MappingEngine(configuration);
@@ -17,7 +17,7 @@ namespace AutoMapperAssist
             return ConfigurationHelpers.CreateDefaultConfiguration();
         }
 
-        protected ObjectMapper(IMappingEngine mappingEngine)
+        protected Mapper(IMappingEngine mappingEngine)
         {
             this.mappingEngine = mappingEngine;
         }
