@@ -2,10 +2,10 @@ using System.Collections.Generic;
 
 namespace AutoMapperAssist
 {
-    public interface IMapper<TFrom, TTo>
+    public interface IMapper<TSource, TDestination>
     {
-        TTo Map(TFrom from);
-        IEnumerable<TTo> Map(IEnumerable<TFrom> from);
-        void Map(TFrom from, TTo to);
+        TDestination Map(TSource source);
+        IEnumerable<TDestination> Map(IEnumerable<TSource> source);
+        void Map(TSource source, TDestination destination);
     }
 }

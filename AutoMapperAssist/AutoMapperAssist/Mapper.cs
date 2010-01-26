@@ -4,7 +4,7 @@ using AutoMapper;
 
 namespace AutoMapperAssist
 {
-    public abstract class Mapper<TFrom, TTo> : IMapToDefine, IMapper<TFrom, TTo>
+    public abstract class Mapper<TSource, TDestination> : IMapToDefine, IMapper<TSource, TDestination>
     {
         private readonly IMappingEngine mappingEngine;
 
@@ -24,25 +24,25 @@ namespace AutoMapperAssist
             this.mappingEngine = mappingEngine;
         }
 
-        public virtual TTo Map(TFrom from)
+        public virtual TDestination Map(TSource source)
         {
-            return mappingEngine.Map<TFrom, TTo>(from);
+            return mappingEngine.Map<TSource, TDestination>(source);
         }
 
-        public virtual IEnumerable<TTo> Map(IEnumerable<TFrom> from)
+        public virtual IEnumerable<TDestination> Map(IEnumerable<TSource> source)
         {
-            return from item in @from
-                   select mappingEngine.Map<TFrom, TTo>(item);
+            return from item in source
+                   select mappingEngine.Map<TSource, TDestination>(item);
         }
 
-        public virtual void Map(TFrom from, TTo to)
+        public virtual void Map(TSource source, TDestination destination)
         {
-            mappingEngine.Map(from, to);
+            mappingEngine.Map(source, destination);
         }
 
         public virtual void DefineMap(IConfiguration configuration)
         {
-            configuration.CreateMap<TFrom, TTo>();
+            configuration.CreateMap<TSource, TDestination>();
         }
 
         #region private methods
