@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 
 namespace AutoMapperAssist
@@ -25,6 +27,17 @@ namespace AutoMapperAssist
         public virtual TTo Map(TFrom from)
         {
             return mappingEngine.Map<TFrom, TTo>(from);
+        }
+
+        public virtual IEnumerable<TTo> Map(IEnumerable<TFrom> from)
+        {
+            return from item in @from
+                   select mappingEngine.Map<TFrom, TTo>(item);
+        }
+
+        public virtual void Map(TFrom from, TTo to)
+        {
+            mappingEngine.Map(from, to);
         }
 
         public virtual void DefineMap(IConfiguration configuration)
