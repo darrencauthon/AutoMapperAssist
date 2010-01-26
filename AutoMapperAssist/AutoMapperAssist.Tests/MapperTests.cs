@@ -8,7 +8,7 @@ namespace AutoMapperAssist.Tests
     public class MapperTests
     {
         [TestMethod]
-        public void Convert_PassedT_ReturnsResultFromAutoMapper()
+        public void Map_PassedT_ReturnsResultFromAutoMapper()
         {
             // arrange
             var expectedOrange = new Orange();
@@ -29,7 +29,7 @@ namespace AutoMapperAssist.Tests
         }
 
         [TestMethod]
-        public void Convert_PassedTAndNoConstructor_ReturnsMappedObject()
+        public void Map_PassedTAndNoConstructor_ReturnsMappedObject()
         {
             // arrange
             var converter = new TestObjectMapper();
@@ -42,7 +42,7 @@ namespace AutoMapperAssist.Tests
         }
 
         [TestMethod]
-        public void CreateMap_PassedMappingConfiguration_CallsCreateMapOnMappingConfiguration()
+        public void DefineMap_PassedMappingConfiguration_CallsCreateMapOnMappingConfiguration()
         {
             // arrange
             var converter = new TestObjectMapper(new Mock<IMappingEngine>().Object);
@@ -55,6 +55,7 @@ namespace AutoMapperAssist.Tests
             // assert
             configurationFake.Verify(x => x.CreateMap<Apple, Orange>(), Times.Once());
         }
+
     }
 
     public class TestObjectMapper : Mapper<Apple, Orange>
