@@ -14,11 +14,6 @@ namespace AutoMapperAssist
             mappingEngine = new MappingEngine(configuration);
         }
 
-        private static Configuration CreateDefaultAutoMapperConfiguration()
-        {
-            return ConfigurationHelpers.CreateDefaultConfiguration();
-        }
-
         protected Mapper(IMappingEngine mappingEngine)
         {
             this.mappingEngine = mappingEngine;
@@ -46,6 +41,11 @@ namespace AutoMapperAssist
         }
 
         #region private methods
+
+        private static Configuration CreateDefaultAutoMapperConfiguration()
+        {
+            return ConfigurationHelpers.CreateDefaultConfiguration();
+        }
 
         private Configuration CreateAutoMapperConfigurationWithCurrentMap()
         {
