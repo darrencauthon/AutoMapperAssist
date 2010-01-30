@@ -43,6 +43,23 @@ namespace AutoMapperAssist.Tests
         }
 
         [TestMethod]
+        public void Map_PassedTAndMappingConfigurationInConstructor_ReturnsMappedObject()
+        {
+            // arrange
+
+            var mappingConfiguration = ConfigurationHelpers.CreateDefaultConfiguration();
+            mappingConfiguration.CreateMap<Apple, Orange>();
+
+            var converter = new TestObjectMapper(mappingConfiguration);
+
+            // act
+            var orange = converter.Map(new Apple {Type = "TEST"});
+
+            // assert
+            Assert.AreEqual("TEST", orange.Type);
+        }
+
+        [TestMethod]
         public void Map_PassedEnumerableT_ReturnsEnumerableFromAutoMapper()
         {
             // arrange
@@ -103,6 +120,11 @@ namespace AutoMapperAssist.Tests
 
         public TestObjectMapper(IMappingEngine mappingEngine)
             : base(mappingEngine)
+        {
+        }
+
+        public TestObjectMapper(IConfigurationProvider configurationProvider)
+            : base(configurationProvider)
         {
         }
     }

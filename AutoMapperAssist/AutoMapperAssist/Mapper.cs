@@ -19,6 +19,11 @@ namespace AutoMapperAssist
             this.mappingEngine = mappingEngine;
         }
 
+        protected Mapper(IConfigurationProvider configuration)
+        {
+            mappingEngine = new MappingEngine(configuration);
+        }
+
         public virtual TDestination Map(TSource source)
         {
             return mappingEngine.Map<TSource, TDestination>(source);
