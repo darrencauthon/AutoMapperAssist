@@ -42,7 +42,12 @@ namespace AutoMapperAssist
 
         public virtual void DefineMap(IConfiguration configuration)
         {
-            configuration.CreateMap<TSource, TDestination>();
+            var map = configuration.CreateMap<TSource, TDestination>();
+            DefineMap(configuration, map);
+        }
+
+        public virtual void DefineMap<TSource, TDestination>(IConfiguration configuration, IMappingExpression<TSource, TDestination> map)
+        {
         }
 
         #region private methods
