@@ -4,22 +4,22 @@ using AutoMapper;
 
 namespace AutoMapperAssist
 {
-    public abstract class AbstractMapper<TSource, TDestination> : IAbstractMapper<TSource, TDestination>
+    public abstract class Mapper<TSource, TDestination> : IAbstractMapper<TSource, TDestination>
     {
         private readonly IMappingEngine mappingEngine;
 
-        protected AbstractMapper()
+        protected Mapper()
         {
             var configuration = CreateAutoMapperConfigurationWithCurrentMap();
             mappingEngine = new MappingEngine(configuration);
         }
 
-        protected AbstractMapper(IMappingEngine mappingEngine)
+        protected Mapper(IMappingEngine mappingEngine)
         {
             this.mappingEngine = mappingEngine;
         }
 
-        protected AbstractMapper(IConfigurationProvider configuration)
+        protected Mapper(IConfigurationProvider configuration)
         {
             mappingEngine = new MappingEngine(configuration);
         }

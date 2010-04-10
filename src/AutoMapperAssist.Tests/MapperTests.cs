@@ -112,7 +112,7 @@ namespace AutoMapperAssist.Tests
         }
     }
 
-    public class TestObjectMapper : AbstractMapper<Apple, Orange>
+    public class TestObjectMapper : Mapper<Apple, Orange>
     {
         public TestObjectMapper()
         {
