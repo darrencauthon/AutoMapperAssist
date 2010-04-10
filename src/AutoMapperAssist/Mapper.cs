@@ -4,7 +4,7 @@ using AutoMapper;
 
 namespace AutoMapperAssist
 {
-    public abstract class Mapper<TSource, TDestination> : IAbstractMapper<TSource, TDestination>
+    public class Mapper<TSource, TDestination> : IAbstractMapper<TSource, TDestination>
     {
         private readonly IMappingEngine mappingEngine;
 
