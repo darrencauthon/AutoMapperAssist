@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -23,7 +23,7 @@ namespace AutoMapperAssist.Tests
             var converter = new TestObjectMapper(mappingEngineFake.Object);
 
             // act
-            var orange = converter.Map(apple);
+            var orange = converter.CreateInstance(apple);
 
             // assert
             Assert.AreSame(expectedOrange, orange);
@@ -36,7 +36,7 @@ namespace AutoMapperAssist.Tests
             var converter = new TestObjectMapper();
 
             // act
-            var orange = converter.Map(new Apple {Type = "TEST"});
+            var orange = converter.CreateInstance(new Apple{Type = "TEST"});
 
             // assert
             Assert.AreEqual("TEST", orange.Type);
@@ -53,7 +53,7 @@ namespace AutoMapperAssist.Tests
             var converter = new TestObjectMapper(mappingConfiguration);
 
             // act
-            var orange = converter.Map(new Apple {Type = "TEST"});
+            var orange = converter.CreateInstance(new Apple{Type = "TEST"});
 
             // assert
             Assert.AreEqual("TEST", orange.Type);
@@ -70,7 +70,7 @@ namespace AutoMapperAssist.Tests
             var converter = new TestObjectMapper(mappingEngineFake.Object);
 
             // act
-            var oranges = converter.Map(new[] {new Apple(), new Apple(), new Apple()});
+            var oranges = converter.CreateSet(new[]{new Apple(), new Apple(), new Apple()});
 
             // assert
             Assert.AreEqual(3, oranges.Count());
@@ -90,7 +90,7 @@ namespace AutoMapperAssist.Tests
             var converter = new TestObjectMapper(mappingEngineFake.Object);
 
             // act
-            converter.Map(apple, orange);
+            converter.LoadIntoInstance(apple, orange);
 
             // assert
             mappingEngineFake.Verify(x => x.Map(apple, orange), Times.Once());
@@ -112,7 +112,7 @@ namespace AutoMapperAssist.Tests
         }
     }
 
-    public class TestObjectMapper : Mapper<Apple, Orange>
+    public class TestObjectMapper : AbstractMapper<Apple, Orange>
     {
         public TestObjectMapper()
         {

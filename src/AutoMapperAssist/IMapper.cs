@@ -4,8 +4,8 @@ namespace AutoMapperAssist
 {
     public interface IMapper<TSource, TDestination>
     {
-        TDestination Map(TSource source);
-        IEnumerable<TDestination> Map(IEnumerable<TSource> source);
-        void Map(TSource source, TDestination destination);
+        TDestination CreateInstance(TSource source);
+        IEnumerable<TDestination> CreateSet(IEnumerable<TSource> source);
+        void LoadIntoInstance(TSource source, TDestination destination);
     }
 }

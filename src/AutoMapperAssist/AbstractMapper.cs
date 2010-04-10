@@ -4,53 +4,50 @@ using AutoMapper;
 
 namespace AutoMapperAssist
 {
-    public abstract class Mapper<TSource, TDestination> : IMapToDefine, IMapper<TSource, TDestination>
+    public abstract class AbstractMapper<TSource, TDestination> : IAbstractMapper<TSource, TDestination>
     {
         private readonly IMappingEngine mappingEngine;
 
-        protected Mapper()
+        protected AbstractMapper()
         {
             var configuration = CreateAutoMapperConfigurationWithCurrentMap();
             mappingEngine = new MappingEngine(configuration);
         }
 
-        protected Mapper(IMappingEngine mappingEngine)
+        protected AbstractMapper(IMappingEngine mappingEngine)
         {
             this.mappingEngine = mappingEngine;
         }
 
-        protected Mapper(IConfigurationProvider configuration)
+        protected AbstractMapper(IConfigurationProvider configuration)
         {
             mappingEngine = new MappingEngine(configuration);
         }
 
-        public virtual TDestination Map(TSource source)
+        public virtual TDestination CreateInstance(TSource source)
         {
             return mappingEngine.Map<TSource, TDestination>(source);
         }
 
-        public virtual IEnumerable<TDestination> Map(IEnumerable<TSource> source)
+        public virtual IEnumerable<TDestination> CreateSet(IEnumerable<TSource> source)
         {
             return from item in source
                    select mappingEngine.Map<TSource, TDestination>(item);
         }
 
-        public virtual void Map(TSource source, TDestination destination)
+        public virtual void LoadIntoInstance(TSource source, TDestination destination)
         {
             mappingEngine.Map(source, destination);
         }
 
         public virtual void DefineMap(IConfiguration configuration)
         {
-            var map = configuration.CreateMap<TSource, TDestination>();
-            DefineMap(configuration, map);
+            DefineMap(configuration.CreateMap<TSource, TDestination>());
         }
 
-        public virtual void DefineMap<TSource, TDestination>(IConfiguration configuration, IMappingExpression<TSource, TDestination> map)
+        public void DefineMap(IMappingExpression<TSource, TDestination> mappingExpression)
         {
         }
-
-        #region private methods
 
         private static Configuration CreateDefaultAutoMapperConfiguration()
         {
@@ -63,7 +60,5 @@ namespace AutoMapperAssist
             DefineMap(configuration);
             return configuration;
         }
-
-        #endregion
     }
 }

@@ -50,9 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationHelpers.cs" />
+    <Compile Include="IAbstractMapper.cs" />
     <Compile Include="IMapToDefine.cs" />
     <Compile Include="IMapper.cs" />
-    <Compile Include="Mapper.cs" />
+    <Compile Include="AbstractMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestingHelpers.cs" />
   </ItemGroup>

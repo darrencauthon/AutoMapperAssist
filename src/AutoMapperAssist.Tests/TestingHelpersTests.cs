@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AutoMapperAssist.Tests
@@ -20,11 +20,11 @@ namespace AutoMapperAssist.Tests
         }
     }
 
-    public class ValidObjectMapper : Mapper<IAmLikeAnApple, IAmAlsoLikeAnApple>
+    public class ValidObjectMapper : AbstractMapper<IAmLikeAnApple, IAmAlsoLikeAnApple>
     {
     }
 
-    public class InvalidObjectMapper : Mapper<IAmLikeAnApple, IAmLikeAnOrange>
+    public class InvalidObjectMapper : AbstractMapper<IAmLikeAnApple, IAmLikeAnOrange>
     {
     }
 
