@@ -8,18 +8,18 @@ namespace AutoMapperAssist
     {
         private readonly IMappingEngine mappingEngine;
 
-        protected Mapper()
+        public Mapper()
         {
             var configuration = CreateAutoMapperConfigurationWithCurrentMap();
             mappingEngine = new MappingEngine(configuration);
         }
 
-        protected Mapper(IMappingEngine mappingEngine)
+        public Mapper(IMappingEngine mappingEngine)
         {
             this.mappingEngine = mappingEngine;
         }
 
-        protected Mapper(IConfigurationProvider configuration)
+        public Mapper(IConfigurationProvider configuration)
         {
             mappingEngine = new MappingEngine(configuration);
         }
