@@ -1,15 +1,15 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMapperAssist", "AutoMapperAssist\AutoMapperAssist.csproj", "{8B0E6D15-6C8C-4AEC-8AA7-0331FBE1137E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMapperAssist.Tests", "AutoMapperAssist.Tests\AutoMapperAssist.Tests.csproj", "{CEDB09D7-B7B8-496C-B2E4-55F62E5801FF}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{56E24403-3EFC-4ADB-8D70-EDB4AD8A0561}"
 	ProjectSection(SolutionItems) = preProject
 		AutoMapperAssist.vsmdi = AutoMapperAssist.vsmdi
 		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMapperAssist", "AutoMapperAssist\AutoMapperAssist.csproj", "{8B0E6D15-6C8C-4AEC-8AA7-0331FBE1137E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMapperAssist.Tests", "AutoMapperAssist.Tests\AutoMapperAssist.Tests.csproj", "{CEDB09D7-B7B8-496C-B2E4-55F62E5801FF}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
