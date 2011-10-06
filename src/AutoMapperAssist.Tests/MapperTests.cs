@@ -1,14 +1,14 @@
 using System.Linq;
 using AutoMapper;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 
 namespace AutoMapperAssist.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class MapperTests
     {
-        [TestMethod]
+        [Test]
         public void Map_PassedT_ReturnsResultFromAutoMapper()
         {
             // arrange
@@ -29,7 +29,7 @@ namespace AutoMapperAssist.Tests
             Assert.AreSame(expectedOrange, orange);
         }
 
-        [TestMethod]
+        [Test]
         public void Map_PassedTAndNoConstructor_ReturnsMappedObject()
         {
             // arrange
@@ -42,7 +42,7 @@ namespace AutoMapperAssist.Tests
             Assert.AreEqual("TEST", orange.Type);
         }
 
-        [TestMethod]
+        [Test]
         public void Map_PassedTAndMappingConfigurationInConstructor_ReturnsMappedObject()
         {
             // arrange
@@ -59,7 +59,7 @@ namespace AutoMapperAssist.Tests
             Assert.AreEqual("TEST", orange.Type);
         }
 
-        [TestMethod]
+        [Test]
         public void Map_PassedEnumerableT_ReturnsEnumerableFromAutoMapper()
         {
             // arrange
@@ -76,7 +76,7 @@ namespace AutoMapperAssist.Tests
             Assert.AreEqual(3, oranges.Count());
         }
 
-        [TestMethod]
+        [Test]
         public void Map_PassedTAndOutVariable_SetsOutValueToMappedResult()
         {
             // arrange
@@ -96,7 +96,7 @@ namespace AutoMapperAssist.Tests
             mappingEngineFake.Verify(x => x.Map(apple, orange), Times.Once());
         }
 
-        [TestMethod]
+        [Test]
         public void DefineMap_PassedMappingConfiguration_CallsCreateMapOnMappingConfiguration()
         {
             // arrange

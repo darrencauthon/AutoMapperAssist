@@ -49,12 +49,12 @@ namespace AutoMapperAssist
         {
         }
 
-        private static Configuration CreateDefaultAutoMapperConfiguration()
+        private static ConfigurationStore CreateDefaultAutoMapperConfiguration()
         {
             return ConfigurationHelpers.CreateDefaultConfiguration();
         }
 
-        private Configuration CreateAutoMapperConfigurationWithCurrentMap()
+        private ConfigurationStore CreateAutoMapperConfigurationWithCurrentMap()
         {
             var configuration = CreateDefaultAutoMapperConfiguration();
             DefineMap(configuration);

@@ -1,19 +1,26 @@
 using AutoMapper;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace AutoMapperAssist.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class TestingHelpersTests
     {
-        [TestMethod]
-        [ExpectedException(typeof (AutoMapperConfigurationException))]
+        [Test]
         public void AssertConfigurationIsValid_PassedInvalidMapper_ThrowsException()
         {
-            (new InvalidObjectMapper()).AssertConfigurationIsValid();
+            var threwException = false;
+            try
+            {
+                (new InvalidObjectMapper()).AssertConfigurationIsValid();
+            } catch
+            {
+                threwException = true;
+            }
+            Assert.IsTrue(threwException);
         }
 
-        [TestMethod]
+        [Test]
         public void AssertConfigurationIsValid_PassedValidMapper_DoesNotThrowException()
         {
             (new ValidObjectMapper()).AssertConfigurationIsValid();

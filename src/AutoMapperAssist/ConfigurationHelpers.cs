@@ -5,9 +5,9 @@ namespace AutoMapperAssist
 {
     public static class ConfigurationHelpers
     {
-        public static Configuration CreateDefaultConfiguration()
+        public static ConfigurationStore CreateDefaultConfiguration()
         {
-            return new Configuration(new TypeMapFactory(), MapperRegistry.AllMappers());
+            return new ConfigurationStore(new TypeMapFactory(), MapperRegistry.AllMappers());
         }
     }
 }
