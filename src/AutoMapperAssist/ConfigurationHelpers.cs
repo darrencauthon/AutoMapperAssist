@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.Mappers;
+using System.Collections.Generic;
 
 namespace AutoMapperAssist
 {
@@ -7,7 +8,8 @@ namespace AutoMapperAssist
     {
         public static ConfigurationStore CreateDefaultConfiguration()
         {
-            return new ConfigurationStore(new TypeMapFactory(), MapperRegistry.AllMappers());
+			return new ConfigurationStore (new TypeMapFactory(), new List<IObjectMapper>());
+            //return new ConfigurationStore(new TypeMapFactory(), MapperRegistry.AllMappers);
         }
     }
 }
